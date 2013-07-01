@@ -1,0 +1,7 @@
+-r _base.txt
+
+# 1.2b is buggy
+Sphinx==1.1.3
+coverage==3.6
+django-debug-toolbar==0.9.4
+django-debug-toolbar-template-timings==0.4.4

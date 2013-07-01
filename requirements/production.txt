@@ -1,0 +1,4 @@
+-r _base.txt
+
+djrill==0.3.1
+gunicorn==0.17.4

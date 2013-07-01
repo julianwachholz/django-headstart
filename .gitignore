@@ -1,0 +1,18 @@
+# These are project related ignore rules. You may not add editor specific rules in this file,
+# but use your own global .gitignore file since everyone uses a different editor setup.
+# e.g. git config --global core.excludesfile ~/.gitignore_global
+
+# Python bytecode
+*.py[co]
+
+# Compiled message files
+*.mo
+
+# Sphinx build
+build
+
+# Data directories and logs
+*.log
+*.db
+{{ project_name }}/media/*
+{{ project_name }}/static/*
