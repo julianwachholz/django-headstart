@@ -3,13 +3,15 @@ Django project template
 #######################
 
 This is a django project template. It uses several best practices and is my own
-version of the twoscoops project template. A major difference though is the use
+version of the `twoscoops project template`_. A major difference though is the use
 of a single settings file (except for test settings). The idea is that the
 project should be fully configurable with environment variables.
 
+.. _twoscoops project template: https://github.com/twoscoops/django-twoscoops-project/tree/develop
+
 To use this template, call `startproject` like this::
 
-    django-admin.py startproject --template=/path/to/folder -e=py,rst,html,gitignore {{ project_name }}
+    django-admin.py startproject --template=https://github.com/julianwachholz/django-project-template/archive/master.zip -e=py,rst,html,gitignore {{ project_name }}
 
 Also you can or should probably remove this section from the readme after doing so.
 
