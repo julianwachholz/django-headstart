@@ -8,7 +8,7 @@
     {{ project_name }}{% templatetag openblock %} endblock {% templatetag closeblock %}</title>
 
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-  <link rel="stylesheet" href="{{ STATIC_URL }}styles/app.scss">
+  <link rel="stylesheet" href="{% templatetag openvariable %} STATIC_URL {% templatetag closevariable %}styles/app.css">
   {% templatetag openblock %} block extrahead {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 </head>
 <body>
