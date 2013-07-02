@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from ..views import HomeView
+from .views import HomeView
 
 
 admin.autodiscover()

@@ -181,9 +181,7 @@ MIDDLEWARE_CLASSES = (
 
 
 ########## URL CONFIGURATION
-ROOT_URLCONF = '{{ project_name }}.urls.base'
-if DEBUG:
-    ROOT_URLCONF = '{{ project_name }}.urls.local'
+ROOT_URLCONF = '{{ project_name }}.urls'
 ABSOLUTE_URL_OVERRIDES = {}
 
 #LOGIN_URL = 'accounts:login'
