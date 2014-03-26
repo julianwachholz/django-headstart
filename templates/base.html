@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{% templatetag openvariable %} LANGUAGE_CODE {% templatetag closevariable %}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% templatetag openblock %} block title {% templatetag closeblock %}{{ project_name }}{% templatetag openblock %} endblock {% templatetag closeblock %}</title>
+
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+  <link rel="stylesheet" href="{% templatetag openvariable %} STATIC_URL {% templatetag closevariable %}style.css">
+  {% templatetag openblock %} block extrahead {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+</head>
+<body>
+  {% templatetag openblock %} block main {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+</body>
+</html>

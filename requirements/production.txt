@@ -1,4 +1,0 @@
--r _base.txt
-
-djrill==0.6.0
-gunicorn==18.0

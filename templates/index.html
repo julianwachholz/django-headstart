@@ -1,0 +1,7 @@
+{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+
+{% templatetag openblock %} block main {% templatetag closeblock %}
+  <h1>{{ project_name }}</h1>
+  <p>{% templatetag openblock %} trans "Hello, world!" {% templatetag closeblock %}</p>
+{% templatetag openblock %} endblock {% templatetag closeblock %}

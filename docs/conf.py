@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 import sys
 import os
 
@@ -31,7 +28,7 @@ master_doc = 'index'
 #default_role = None
 # Keep warnings in built files
 keep_warnings = True
-needs_sphinx = '1.1'
+#needs_sphinx = '1.1'
 # Warn about all broken references
 nitpicky = True
 #nitpick_ignore = []
@@ -82,7 +79,6 @@ todo_include_todos = True
 intersphinx_mapping = {
     'python': ('http://docs.python.org/2.7', None),
     'django': ('http://django.readthedocs.org/en/latest/', None),
-    'venvwrapper': ('http://virtualenvwrapper.readthedocs.org/en/latest/', None),
 }
 
 

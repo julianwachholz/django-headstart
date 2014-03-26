@@ -1,3 +1,9 @@
-# This file is here because many Platforms as a Service look for
-# requirements.txt in the root directory of a project.
--r requirements/production.txt
+https://www.djangoproject.com/download/1.7b1/tarball/
+dj-database-url==0.3.0
+#psycopg2==2.5.2
+
+# There are optional, but very useful packages:
+#django-vanilla-views==1.0.2
+#formulation==2.0.7.2
+#pytz==2013.9
+#python-dateutil==2.2
