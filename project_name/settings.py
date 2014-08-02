@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import dj_database_url
+import dj_config_url
 from django.core.exceptions import ImproperlyConfigured
 
 
@@ -47,13 +47,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #'formulation',
-    #'apps.accounts',
-    #'apps.mycoolapp',
+    # 'formulation',
+    # 'apps.accounts',
+    # 'apps.mycoolapp',
     # ...
 )
 
-#AUTH_USER_MODEL = 'accounts.User'
+# AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,9 +72,12 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-DEFAULT_DATABASE = 'sqlite:///{{ project_name }}.db'
 DATABASES = {
-    'default': dj_database_url.parse(get_env_setting('DATABASE_URL', DEFAULT_DATABASE)),
+    'default': dj_config_url.config(),
+}
+
+CACHES = {
+    'default': dj_config_url.cache_config(),
 }
 
 

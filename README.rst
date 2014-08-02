@@ -33,9 +33,9 @@ You'll be able to start working on this project with the following prerequisites
 
 You can roughly follow these simple commands to get a running application::
 
-    $ virtualenv -p`which python3.3` {{ project_name }}-env
+    $ virtualenv {{ project_name }}-env
     $ source {{ project_name }}-env/bin/activate
-    
+
     # Only required if you haven't setup your project yet. Remove these lines otherwise.
     $ pip install https://www.djangoproject.com/download/1.7b1/tarball/
     $ django-admin.py startproject --template=https://github.com/julianwachholz/django-project-template/archive/master.zip -e=py,rst,html {{ project_name }}
