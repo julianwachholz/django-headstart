@@ -1,0 +1,30 @@
+{% extends 'accounts/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Two-Factor setup complete!' %} | {{ block.super }}{% endblock %}
+{% block page_title %}{% trans 'Two-Factor setup complete!' %}{% endblock %}
+
+{% block content %}
+
+  <p>
+    {% blocktrans trimmed %}
+      Congratulations, you've successfully enabled two-factor authentication.
+    {% endblocktrans %}
+  </p>
+
+  <p>
+    {% blocktrans %}
+      We recommend you create backup codes now and save them securely, so you
+      can access your account in the event that your primary device should be unavailable.
+    {% endblocktrans %}
+  </p>
+
+  <p>
+    <a href="{% url 'two_factor:backup_tokens' %}" class="button small">
+      {% trans 'Generate backup codes' %}
+    </a>
+    <a href="{% url 'two_factor:profile' %}" class="button small secondary">
+      {% trans 'Back to profile' %}
+    </a>
+  </p>
+{% endblock %}

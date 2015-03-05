@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block main %}
+  <div class="row">
+    <h1 class="small-12 columns">{% block page_title %}headstart{% endblock %}</h1>
+    <div class="small-4 columns">
+      <ul class="side-nav">
+        <li class="{% if view.name == 'user_detail' %}active{% endif %}">
+          <a href="{% url 'accounts:detail' %}">
+            {% trans 'Account details' %}
+          </a>
+        </li>
+        <li class="{% if view.name == 'password_change' %}active{% endif %}">
+          <a href="{% url 'accounts:password_change' %}">
+            {% trans 'Change password' %}
+          </a>
+        </li>
+        <li class="{% if request.resolver_match.namespace == 'two_factor' %}active{% endif %}">
+          <a href="{% url 'two_factor:profile' %}">
+            {% trans 'Two-factor authentication' %}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="small-8 columns">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+{% endblock %}

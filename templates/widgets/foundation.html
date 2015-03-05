@@ -1,0 +1,159 @@
+{% load i18n %}
+{% load sniplates %}
+
+{% load_widgets form='widgets/foundation.html' %}
+
+Widget template for ZURB Foundation form fields and more.
+
+
+{% block Submit %}
+  <div class="row">
+    <div class="small-offset-3 small-9 columns">
+      <button type="submit" class="button small">{{ label }}</button>
+      {% if secondary and secondary_url %}
+        <a href="{{ secondary_url }}" class="button small secondary">
+          {{ secondary }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block Content %}
+  <div class="row">
+    <div class="small-offset-3 small-9 columns">
+      {{ content }}
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block NonFieldErrors %}
+  {% for error in errors|default:form.non_field_errors %}
+    <div class="alert-box alert">{{ error }}</div>
+  {% endfor %}
+{% endblock %}
+
+
+{% block TextInput %}
+  <div class="row{{ errors|yesno:' error,' }}">
+    <div class="small-3 columns">
+      <label for="{{ id }}" class="right inline">{{ label }}</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="{{ input_type|default:'text' }}" name="{{ html_name }}" id="{{ id }}"
+        value="{{ value|default:'' }}"
+        class="{{ css_classes }}{{ errors|yesno:' error,' }}"
+        {{ widget.attrs|flatattrs }}
+        {{ autofocus|yesno:'autofocus,' }} {{ required|yesno:'required,' }}
+        {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}>
+
+      {% for error in errors %}
+        <span class="error">{{ error }}</span>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+{% block EmailInput %}{% widget 'form:TextInput' input_type='email' %}{% endblock %}
+{% block PasswordInput %}{% widget 'form:TextInput' input_type='password' value='' %}{% endblock %}
+{% block NumberInput %}{% widget 'form:TextInput' input_type='number' %}{% endblock %}
+{% block DateInput %}{% widget 'form:TextInput' input_type='date' value=value|date:'Y-m-d' %}{% endblock %}
+{% block DateTimeInput %}{% widget 'form:TextInput' input_type='datetime' value=value|date:'Y-m-d H:i:s' %}{% endblock %}
+{% block TimeInput %}{% widget 'form:TextInput' input_type='time' value=value|date:'H:i:s' %}{% endblock %}
+
+
+{% block Textarea %}
+  <div class="row{{ errors|yesno:' error,' }}">
+    <div class="small-3 columns">
+      <label for="{{ id }}" class="right inline">{{ label }}</label>
+    </div>
+    <div class="small-9 columns">
+      <textarea name="{{ html_name }}" id="{{ id }}"
+        class="{{ css_classes }}{{ errors|yesno:' error,' }}"
+        {{ widget.attrs|flatattrs }}
+        {{ required|yesno:'required,' }}
+        {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+      >{{ value|default:'' }}</textarea>
+
+      {% for error in errors %}
+        <span class="error">{{ error }}</span>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block CheckboxInput %}
+  <div class="row{{ errors|yesno:' error,' }}">
+    <div class="small-3 columns">
+      <label class="right">{{ label }}</label>
+    </div>
+    <div class="small-9 columns">
+      <input name="{{ html_name }}" id="{{ id }}" type="checkbox"{{ form_field.value|yesno:' checked,' }}>
+      <label for="{{ id }}">{{ help_text }}</label>
+      {% for error in errors %}
+        <span class="error">{{ error }}</span>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block RadioSelect %}
+  <div class="row{{ errors|yesno:' error,' }}">
+    <div class="small-3 columns">
+      <label class="right">{{ label }}</label>
+    </div>
+    <div class="small-9 columns">
+      {% for val, display in choices %}
+        <input name="{{ html_name }}" id="{{ id }}_{{ forloop.counter0 }}" type="radio"
+               value="{{ val }}"{% if val == value|default:'' %} checked{% endif %}>
+        <label for="{{ id }}_{{ forloop.counter0 }}">{{ display }}</label><br>
+      {% endfor %}
+      {% for error in errors %}
+        <span class="error">{{ error }}</span>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block Select %}
+  <div class="row{{ errors|yesno:' error,' }}">
+    <div class="small-3 columns">
+      <label for="{{ id }}" class="right inline">{{ label }}</label>
+    </div>
+    <div class="small-9 columns">
+      <select name="{{ html_name }}" id="{{ id }}" {{ widget.attrs|flatattrs }}>
+        {% for val, display in choices %}
+          <option value="{{ val }}"{% if val == value|default:'' %} selected{% endif %}>{{ display }}</option>
+        {% endfor %}
+      </select>
+      {% for error in errors %}
+        <span class="error">{{ error }}</span>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block CheckboxSelectMultiple %}
+  <div class="row{{ errors|yesno:' error,' }}">
+    <div class="small-3 columns">
+      <label for="{{ id }}" class="right inline">{{ label }}</label>
+    </div>
+    <div class="small-9 columns">
+      <fieldset id="{{ id }}">
+        {% for val, display in choices %}
+          <input name="{{ html_name }}" id="{{ id }}_{{ forloop.counter0 }}" type="checkbox"
+                 value="{{ val }}"{% if val in value|default:'' %} checked{% endif %}>
+          <label for="{{ id }}_{{ forloop.counter0 }}">{{ display }}</label><br>
+        {% endfor %}
+        {% for error in errors %}
+          <span class="error">{{ error }}</span>
+        {% endfor %}
+      </fieldset>
+    </div>
+  </div>
+{% endblock %}

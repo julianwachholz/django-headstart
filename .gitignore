@@ -1,7 +1,10 @@
 # Use your global ignore file to exclude editor or OS specific files.
 # e.g. git config --global core.excludesfile ~/.gitignore_global
 
-*.py[co]
+*.py[cod]
 *.mo
 *.db
-build
+
+build/
+media/
+assets/foundation

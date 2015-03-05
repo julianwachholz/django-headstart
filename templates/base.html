@@ -1,15 +1,85 @@
 <!doctype html>
-<html lang="{% templatetag openvariable %} LANGUAGE_CODE {% templatetag closevariable %}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% templatetag openblock %} block title {% templatetag closeblock %}{{ project_name }}{% templatetag openblock %} endblock {% templatetag closeblock %}</title>
+<html class="no-js" lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}headstart{% endblock %}</title>
+    {% load staticfiles i18n %}
+    <link rel="stylesheet" href="{% static 'foundation/css/foundation.min.css' %}" />
+    <script src="{% static 'foundation/js/vendor/modernizr.js' %}"></script>
+  </head>
+  <body>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="{% url 'index' %}">headstart</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon">
+          <a href="#">{% trans 'Menu' %}</a>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+        {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'accounts:detail' %}">{% trans 'My account' %}</a>
+          </li>
+          {% if user.is_staff %}
+            <li>
+              <a href="{% url 'admin:index' %}">{% trans 'Go to admin' %}</a>
+            </li>
+          {% endif %}
+          <li>
+            <a href="{% url 'accounts:logout' %}">{% trans 'Logout' %}</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="{% url 'two_factor:login' %}">{% trans 'Login' %}</a>
+          </li>
+          <li>
+            <a href="{% url 'accounts:create' %}">{% trans 'Register' %}</a>
+          </li>
+        {% endif %}
+        </ul>
+        <ul class="left">
+        {% block topbar_left %}
+          <li>
+            <a href="{% url 'index' %}">{% trans 'Home' %}</a>
+          </li>
+        {% endblock %}
+        </ul>
+      </section>
+    </nav>
 
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-  <link rel="stylesheet" href="{% templatetag openvariable %} STATIC_URL {% templatetag closevariable %}style.css">
-  {% templatetag openblock %} block extrahead {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
-</head>
-<body>
-  {% templatetag openblock %} block main {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
-</body>
+    {% for message in messages %}
+      <div class="alert-box {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+
+    {% block main %}
+      <div class="row">
+        <div class="small-12 columns">
+
+          <h1>{% block page_title %}headstart{% endblock %}</h1>
+
+          {% block content %}
+            {% if user.is_authenticated %}
+              <p>Hello, {{ user }}.</p>
+              <a class="button small secondary" href="{% url 'accounts:detail' %}">My account</a>
+              <a class="button small secondary" href="{% url 'accounts:logout' %}">Logout</a>
+            {% else %}
+              <p>Hello, anonymous. Please login or register to continue.</p>
+              <a class="button small" href="{% url 'two_factor:login' %}">Login</a>
+              <a class="button small" href="{% url 'accounts:create' %}">Register</a>
+            {% endif %}
+          {% endblock %}
+        </div>
+      </div>
+    {% endblock %}
+
+    <script src="{% static 'foundation/js/vendor/jquery.js' %}"></script>
+    <script src="{% static 'foundation/js/foundation.min.js' %}"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
 </html>

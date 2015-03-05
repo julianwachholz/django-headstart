@@ -1,0 +1,27 @@
+{% extends 'accounts/base.html' %}
+{% load i18n sniplates %}
+
+{% block title %}{% trans 'Disable Two-factor Authentication' %} | {{ block.super }}{% endblock %}
+{% block page_title %}{% trans 'Disable Two-factor Authentication' %}{% endblock %}
+
+{% block content %}
+  <p>
+    {% blocktrans %}
+      You are about to disable two-factor authentication. This compromises your
+      account security, are you sure?
+    {% endblocktrans %}
+  </p>
+
+  <form method="post">
+    {% load_widgets form='widgets/foundation.html' %}
+    {% csrf_token %}
+
+    {% form_field form.understand %}
+
+    <button type="submit" class="button small alert">
+      {% trans 'Disable two-factor authentication' %}
+    </button>
+    <a href="{% url 'two_factor:profile' %}" class="button small secondary">{% trans 'Cancel' %}</a>
+  </form>
+
+{% endblock %}

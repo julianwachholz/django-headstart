@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load sniplates %}
+
+{% block title %}{% trans 'Register' %} | {{ block.super }}{% endblock %}
+{% block page_title %}{% trans 'Register' %}{% endblock %}
+
+{% block content %}
+
+  <form method="post">
+    {% load_widgets form='widgets/foundation.html' %}
+    {% csrf_token %}
+
+    {% form_field form.email placeholder='john.doe@example.com' %}
+    {% trans 'We will show you what you type so you can be sure there are no typos.' as password_placeholder }
+    {% form_field form.password placeholder=password_placeholder %}
+
+    {% trans 'Register' as label %}
+    {% trans 'Login' as secondary_label %}
+    {% url 'two_factor:login' as url %}
+    {% widget 'form:Submit' label=label secondary=secondary_label secondary_url=url %}
+  </form>
+
+{% endblock %}

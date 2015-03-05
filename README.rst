@@ -1,18 +1,15 @@
-#######################
-Django project template
-#######################
+################
+Django Headstart
+################
 
 This is a Django project template. It uses several best practices from
 all around the place and is optimized for use under Python 3. There
 shouldn't be any problems with it under older Pythons, though.
 The idea is that the project should be fully configurable with environment variables.
 
-Additionally, I prefer putting project specific apps inside an 'apps' module, which
-gives us a way to have a nicer project structure in general.
-
 To use this template, call `startproject` like this::
 
-    django-admin.py startproject --template=https://github.com/julianwachholz/django-project-template/archive/master.zip -e=py,rst,html,gitignore {{ project_name }}
+    django-admin.py startproject --template=https://github.com/julianwachholz/django-headstart/archive/master.zip -e=py,rst,html,gitignore {{ project_name }}
 
 Also you can or should probably remove this section from the README file after starting a project with this command.
 
@@ -37,8 +34,8 @@ You can roughly follow these simple commands to get a running application::
     $ source {{ project_name }}-env/bin/activate
 
     # Only required if you haven't setup your project yet. Remove these lines otherwise.
-    $ pip install https://www.djangoproject.com/download/1.7b1/tarball/
-    $ django-admin.py startproject --template=https://github.com/julianwachholz/django-project-template/archive/master.zip -e=py,rst,html {{ project_name }}
+    $ pip install Django==1.7.4
+    $ django-admin.py startproject --template=https://github.com/julianwachholz/django-headstart/archive/master.zip -e=py,rst,html {{ project_name }}
 
     $ # Append basic environment variables to environment setup
     $ echo "export DEBUG=1" >> {{ project_name }}-env/bin/activate

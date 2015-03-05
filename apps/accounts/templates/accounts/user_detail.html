@@ -1,0 +1,14 @@
+{% extends 'accounts/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'My account' %} | {{ block.super }}{% endblock %}
+{% block page_title %}{% trans 'My account' %}{% endblock %}
+
+{% block content %}
+
+  <dl>
+    <dt>{% trans 'Email' %}</dt>
+    <dd>{{ user.email }}</dd>
+  </dl>
+
+{% endblock %}

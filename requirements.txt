@@ -1,9 +1,12 @@
-https://www.djangoproject.com/download/1.7c2/tarball/
-dj-config-url==0.1.1
-#psycopg2==2.5.3
-
-# There are optional, but very useful packages:
-#django-vanilla-views==1.0.3
-#formulation==2.0.10
-#pytz==2014.4
-#python-dateutil==2.2
+Django==1.7.4
+django-debug-toolbar==1.2.2
+django-environ==0.3.0
+django-redis==3.8.3
+django-sniplates==0.2.2
+django-two-factor-auth==1.1.1
+django-vanilla-views==1.0.3
+Pillow==2.7.0
+psycopg2==2.6
+python-dateutil==2.4.0
+pytz==2014.10
+raven==5.2.0
